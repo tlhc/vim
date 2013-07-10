@@ -1,0 +1,19 @@
+
+§ =============================================================
+§ ========== USER MACROS ======================================
+§ =============================================================
+§
+|AUTHOR|       = tongl
+|AUTHORREF|    = 
+|EMAIL|        = 
+|ORGANIZATION| = 
+|COPYRIGHT|    = Copyright (c) |2012|, |catnation|
+§
+§ =============================================================
+§ ========== FILE INCLUDES ====================================
+§ =============================================================
+§
+|includefile| = bash.comments.template
+|includefile| = bash.statements.template
+|includefile| = bash.paramsub.template
+§
