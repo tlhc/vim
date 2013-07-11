@@ -1,6 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/home/mars/download/gSDK_1.74'
 let g:netrw_dirhist_2='/home/mars/download/gSDK_1.74/google_appengine'
 let g:netrw_dirhist_3='/home/mars/download/gSDK_1.74/google_appengine/demos'
 let g:netrw_dirhist_4='/home/mars/download/gSDK_1.74/google_appengine/demos/guestbook'
+let g:netrw_dirhist_5='/home/mars/comm_use'
+let g:netrw_dirhist_6='/usr/local/lib/python2.7/dist-packages/hyde/tests'
+let g:netrw_dirhist_7='/usr/local/lib/python2.7/dist-packages/jinja2'
+let g:netrw_dirhist_8='/home/mars/T'
+let g:netrw_dirhist_9='/home/mars/vimwiki'
