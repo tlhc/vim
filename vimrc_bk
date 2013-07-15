@@ -953,3 +953,6 @@ let g:SrcExpl_nextDefKey = "<C-4>"
 
 "fuzzfinder
 nmap <c-s-f> :FufBufferTag<CR>
+
+let g:qthelp_tags='/usr/local/Trolltech/Qt-4.8.4/doc/tags'
+let g:qthelp_browser='/opt/google/chrome/google-chrome'
