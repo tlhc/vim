@@ -983,4 +983,13 @@ let g:easy_align_delimiters = {
 \   }
 \ }
 
+"vim easytags
+let g:easytags_cmd = '/usr/local/bin/ctags'
+let g:easytags_file = '~/lib_indx/tags'
 
+set tags+=./tags
+"let g:easytags_dynamic_files = 1
+let g:easytags_dynamic_files = 2
+let g:easytags_by_filetype = 1
+let g:easytags_events = ['BufWritePost']
+let g:easytags_include_members = 1
