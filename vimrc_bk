@@ -954,5 +954,33 @@ let g:SrcExpl_nextDefKey = "<C-4>"
 "fuzzfinder
 nmap <c-s-f> :FufBufferTag<CR>
 
+"qt help plugin
 let g:qthelp_tags='/usr/local/Trolltech/Qt-4.8.4/doc/tags'
 let g:qthelp_browser='/opt/google/chrome/google-chrome'
+
+nmap <c-s-g> :QHelpOnThis<CR>
+"just for the target
+nmap <C-F7> :! ./CMDSim<CR>
+
+"vim easy align
+vnoremap <silent> <Enter> :EasyAlign<cr>
+"let g:easy_align_ignore_comment = 0
+let g:easy_align_delimiters = {
+\ '>': { 'pattern': '>>\|=>\|>' },
+\ '/': { 'pattern': '//\+\|/\*\|\*/' },
+\ '#': { 'pattern': '#\+' },
+\ ']': {
+\     'pattern':       '[\[\]]',
+\     'margin_left':   '',
+\     'margin_right':  '',
+\     'stick_to_left': 0
+\   },
+\ ')': {
+\     'pattern':       '[()]',
+\     'margin_left':   '',
+\     'margin_right':  '',
+\     'stick_to_left': 0
+\   }
+\ }
+
+
