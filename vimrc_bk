@@ -1009,6 +1009,7 @@ let g:miniBufExplModSelTarget = 1
 "hi MBEVisibleActiveChanged guifg=#F1266F guibg=fg
 "
 
+map <leader>gc :CscopeGen<CR>
 ""Default settings are here, you can modify it to create your own key mappings.
 "
 "    " in case your cscope execute is not in system path.
@@ -1032,9 +1033,44 @@ let g:miniBufExplModSelTarget = 1
 "    map <leader>l :call ToggleLocationList()<CR>
 "
 
+
 "syntastic
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 "for qt checking source by .clang_complete gen files
 let g:syntastic_cpp_include_dirs=['/usr/local/Trolltech/Qt-4.8.4/include/', '/usr/share/qt4/mkspecs/linux-g++/', '/usr/include/qt4/QtCore', '/usr/include/qt4/QtGui', '/usr/local/qwt-6.1.0-rc3/include', '/usr/local/Trolltech/Qt-4.8.4/include/QtCore/', '/usr/local/Trolltech/Qt-4.8.4/include/QtGui/'] 
+
+
+"ToggleQuickfix window
+function ToggleQuickfix() 
+    " remember where we are 
+    let winnr = winnr() 
+    " find qf window, if any 
+    let qfw = 0 
+    windo if &l:buftype == "quickfix" | 
+                \	let qfw = winnr() | endif 
+    if qfw 
+        " close qf window 
+        cclose 
+    else 
+        " open qf window as last window, fullwidth 
+        bot copen 
+    endif 
+    " go back to where we started from 
+    if (winnr >= qfw) && (winnr > 1) 
+        let winnr = winnr - 1 
+    endif 
+    exe winnr "wincmd w" 
+endfunction 
+command -nargs=0 -bar FF call ToggleQuickfix() 
+
+function ShowError()
+    execute ":Errors"
+endfunction
+command -nargs=0 -bar EE call ShowError() 
+
+
+
+
+
 
