@@ -147,7 +147,7 @@ if has("gui_running")
 		"colorscheme ps_color
 		"colorscheme default
 		"colorscheme elflord
-		colorscheme seoul256
+		colorscheme seoul256-light
         "colorscheme molokai
         "colorscheme desertEx
 		set guifont=Monacoforpowerline\ 12
@@ -160,7 +160,7 @@ else
 		"colorscheme default
 		"colorscheme molokai
 		"colorscheme seoul256-light
-		colorscheme seoul256
+		colorscheme seoul256-light
 		"colorscheme desert
 		"set guifont=DejaVuSansMono\ 13
 		set guifont=Monacoforpowerline\ 12
@@ -897,7 +897,7 @@ nnoremap <Leader>q :call g:ClangUpdateQuickFix()<CR>
 "nmap <C-F11>:!make CC='~/.vim/bundle/clang_complete/bin/cc_args.py gcc' CXX='~/.vim/bundle/clang_complete/bin/cc_args.py g++' -B <cr>
 "let g:SuperTabMappingForward="<tab>"
 
-set colorcolumn=80
+"set colorcolumn=80
 
 let g:splice_initial_mode = "compare"
 let g:splice_initial_layout_grid = 2
@@ -1040,7 +1040,6 @@ let g:syntastic_warning_symbol='⚠'
 "for qt checking source by .clang_complete gen files
 let g:syntastic_cpp_include_dirs=['/usr/local/Trolltech/Qt-4.8.4/include/', '/usr/share/qt4/mkspecs/linux-g++/', '/usr/include/qt4/QtCore', '/usr/include/qt4/QtGui', '/usr/local/qwt-6.1.0-rc3/include', '/usr/local/Trolltech/Qt-4.8.4/include/QtCore/', '/usr/local/Trolltech/Qt-4.8.4/include/QtGui/'] 
 
-
 "ToggleQuickfix window
 function ToggleQuickfix() 
     " remember where we are 
@@ -1071,6 +1070,10 @@ command -nargs=0 -bar EE call ShowError()
 
 
 
-
-
-
+if exists('+colorcolumn')
+  set colorcolumn=80
+else
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
+hi colorcolumn guibg=darkred
+hi colorcolumn ctermbg=darkred
