@@ -878,8 +878,8 @@ let g:clang_exec="clang"
 let g:clang_user_options=""
 "let g:clang_user_options='2>/dev/null || exit 0"'
 let g:clang_auto_user_options="path, .clang_complete, clang"
-"let g:clang_use_library=0
-"let g:clang_library_path="/usr/lib/"
+let g:clang_use_library=1
+let g:clang_library_path="/usr/lib/"
 "let g:clang_sort_algo="priority"
 let g:clang_complete_macros=1
 let g:clang_complete_patterns=1
@@ -955,6 +955,7 @@ nmap <c-s-f> :FufBufferTag<CR>
 
 "qt help plugin
 let g:qthelp_tags='/usr/local/Trolltech/Qt-4.8.4/doc/tags'
+"let g:qthelp_tags+='/usr/local/qwt-6.1.0-rc3/doc/tags'
 let g:qthelp_browser='/opt/google/chrome/google-chrome'
 
 nmap <c-s-g> :QHelpOnThis<CR>
@@ -1075,5 +1076,22 @@ if exists('+colorcolumn')
 else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
-hi colorcolumn guibg=darkred
-hi colorcolumn ctermbg=darkred
+hi colorcolumn guibg=darkblue
+hi colorcolumn ctermbg=darkblue
+
+
+
+let g:fullscreen = 0
+function! ToggleFullscreen()
+    if g:fullscreen == 1
+        let g:fullscreen = 0
+        let mod = "remove"
+    else
+        let g:fullscreen = 1
+        let mod = "add"
+    endif
+    call system("wmctrl -ir " . v:windowid . " -b " . mod . ",fullscreen")
+endfunction
+map <silent> <F11> :call ToggleFullscreen()<CR>
+
+let g:xptemplate_vars="$author=tlhc&$email=tongl@bjcarnation.com.cn"
