@@ -24,7 +24,8 @@ static void<CURSOR>
 }		/* -----  end of static function |FUNCTION_NAME|  ----- */
 == Idioms.main == map:im, shortcut:m  ==
 #include <stdlib.h>
-#include <stdio.h>
+#include <iostream>
+using namespace std;
 /* 
  * ===  FUNCTION  ======================================================================
  *         Name:  main
