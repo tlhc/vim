@@ -1095,5 +1095,3 @@ endfunction
 map <silent> <F11> :call ToggleFullscreen()<CR>
 
 let g:xptemplate_vars="$author=tlhc&$email=tongl@bjcarnation.com.cn"
-
-"commit test
