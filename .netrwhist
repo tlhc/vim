@@ -1,11 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/Users/mars/achive/百度云同步盘/TT/InterviewQuestions/ReplaceBlank'
-let g:netrw_dirhist_2='/Users/mars/achive/百度云同步盘/TT/InterviewQuestions/MinInStack'
-let g:netrw_dirhist_3='/Users/mars/achive/百度云同步盘/TT/InterviewQuestions/MergeSortedLists'
-let g:netrw_dirhist_4='/Users/mars/ts'
-let g:netrw_dirhist_5='/Users/mars/achive/百度云同步盘/TT/apue.3e'
-let g:netrw_dirhist_6='/Users/mars/Downloads/strone_src/2.5/gmsv/lostpet'
-let g:netrw_dirhist_7='/Users/mars/.vim/bundle/vim-instant-markdown'
-let g:netrw_dirhist_8='/Users/mars/.vim'
-let g:netrw_dirhist_9='/Users/mars/.ssh'
+let g:netrw_dirhist_cnt =0
