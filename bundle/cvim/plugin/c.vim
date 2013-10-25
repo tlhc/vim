@@ -136,7 +136,8 @@ else
 	let s:C_CplusCompiler       = 'g++'      " the C++ compiler
 	let s:C_ExeExtension        = ''         " file extension for executables (leading point required)
 	let s:C_ObjExtension        = '.o'       " file extension for objects (leading point required)
-	let s:C_Man                 = 'man'      " the manual program
+	"let s:C_Man                 = 'man'      " the manual program
+	let s:C_Man                 = '/usr/local/sbin/mman'      " the manual program
 endif
 let s:C_VimCompilerName				= 'gcc'      " the compiler name used by :compiler
 "
