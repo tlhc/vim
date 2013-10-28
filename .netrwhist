@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/Users/mars/.visor'
 let g:netrw_dirhist_2='/Users/mars/achive/百度云同步盘/TT/python'
 let g:netrw_dirhist_3='/Users/mars/.config'
@@ -7,3 +7,4 @@ let g:netrw_dirhist_4='/Users/mars'
 let g:netrw_dirhist_5='/Users/mars/.vim/bundle/vim-easy-align'
 let g:netrw_dirhist_6='/Users/mars/.vim/bundle/nerdtree/plugin'
 let g:netrw_dirhist_7='/Users/mars/code/openSrc/live555/UsageEnvironment/include'
+let g:netrw_dirhist_8='/Users/mars/.vim/UltiSnips'
