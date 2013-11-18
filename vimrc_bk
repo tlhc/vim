@@ -1252,3 +1252,17 @@ let g:xptemplate_vars="$author=tlhc&$email=marst629@gmail.com"
 let g:cscope_cmd = '/usr/local/Cellar/cscope/15.8a/bin/cscope'
 
 "let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+"
+"dash 
+"
+
+let g:dash_map = {
+            \ 'python'     : 'p2',
+            \ 'cpp'        : 'cc',
+            \ }
+
+let g:syntastic_cpp_compiler='clang++'
+let g:syntastic_cpp_compiler_options=' -std=c++11 -stdlib=libc++'
+
+let g:C_CplusCFlags = '-Wall -g -std=c++11 -O0 -c '      " C++ compiler flags: compile, don't optimize
+let g:C_CplusLFlags = '-Wall -g -std=c++11 -O0'         " C++ compiler flags: link   , don't optimize
