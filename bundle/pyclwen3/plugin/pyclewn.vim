@@ -5,7 +5,7 @@
 "
 
 " pyclewn version
-let g:pyclewn_version = "pyclewn-1.10.py2"
+let g:pyclewn_version = "pyclewn-1.11.py2"
 
 " enable balloon_eval
 if has("balloon_eval")

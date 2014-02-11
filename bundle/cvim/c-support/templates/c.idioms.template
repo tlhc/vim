@@ -23,9 +23,8 @@ static void<CURSOR>
 <SPLIT>	return <+return_value+>;
 }		/* -----  end of static function |FUNCTION_NAME|  ----- */
 == Idioms.main == map:im, shortcut:m  ==
-#include <stdlib.h>
-#include <iostream>
-using namespace std;
+#include	<stdlib.h>
+
 /* 
  * ===  FUNCTION  ======================================================================
  *         Name:  main
@@ -63,7 +62,7 @@ if ( |POINTER|==NULL ) {
 	exit (EXIT_FAILURE);
 }
 
-free (|POINTER|);
+free ( |POINTER| );
 |POINTER|	= NULL;
 
 == Idioms.malloc == map:ima, shortcut:m  ==
@@ -73,7 +72,7 @@ if ( |POINTER|==NULL ) {
 	exit (EXIT_FAILURE);
 }
 
-free (|POINTER|);
+free ( |POINTER| );
 |POINTER|	= NULL;
 
 == Idioms.realloc == map:ire, shortcut:r  ==
@@ -86,7 +85,7 @@ if ( |POINTER|==NULL ) {
 == Idioms.sizeof == map:isi, shortcut:s, insert  ==
 sizeof(<CURSOR><SPLIT>)
 == Idioms.assert == map:ias, shortcut:a, insert  ==
-assert(<CURSOR><SPLIT>);
+assert( <CURSOR><SPLIT> );
 == Idioms.open-input-file == map:ii, shortcut:i  ==
 FILE	*|?FILEPOINTER|;										/* input-file pointer */
 char	*|FILEPOINTER|_file_name = "<CURSOR>";		/* input-file name    */
@@ -121,7 +120,7 @@ if( fclose(|FILEPOINTER|) == EOF ) {			/* close output file   */
 	exit (EXIT_FAILURE);
 }
 
-== Idioms.fprintf == map:ifsc, shortcut:f, insert  ==
+== Idioms.fprintf == map:ifpr, shortcut:f, insert  ==
 fprintf ( |?FILEPOINTER|, "<CURSOR>\n",  );
-== Idioms.fscanf == map:ifpr, shortcut:f, insert  ==
+== Idioms.fscanf == map:ifsc, shortcut:f, insert  ==
 fscanf ( |?FILEPOINTER|, "<CURSOR>", & );
