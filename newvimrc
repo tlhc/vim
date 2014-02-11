@@ -10,5 +10,13 @@
 #      REVISION:  ---
 #===============================================================================
 
-cp ~/.vimrc ~/.vim/vimrc_bk
 
+if [ "$1" = "w" ] ; then
+    cp ~/.vimrc ~/.vim/vimrc_bk_work
+    echo "ok"
+elif [ "$1" = "h" ] ; then
+    cp ~/.vimrc ~/.vim/vimrc_bk
+    echo "ok"
+else 
+    echo "USAGE w h"
+fi
