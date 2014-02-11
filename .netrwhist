@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/home/mars/IPNC3.0/ipnc_rdk/ipnc_app/network/boa-0.94.13/src'
 let g:netrw_dirhist_2='/home/mars/.vim/bundle/vim-plugin-viewdoc/plugin'
 let g:netrw_dirhist_3='/home/mars/SMK/cscopeGen'
@@ -8,3 +8,4 @@ let g:netrw_dirhist_5='/home/mars/IPNC3.0/ipnc_psp/u-boot/board/davinci/dm365_ip
 let g:netrw_dirhist_6='/home/mars/IPNC3.0/ipnc_psp/u-boot/cpu/arm926ejs'
 let g:netrw_dirhist_7='/home/mars/.vim'
 let g:netrw_dirhist_8='/home/mars/ACHIVE/apue/apue.2e/threads'
+let g:netrw_dirhist_9='/home/mars/.vim/.git'
