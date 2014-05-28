@@ -1226,8 +1226,8 @@ if exists('+colorcolumn')
 else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
-hi colorcolumn guibg=darkblue
-hi colorcolumn ctermbg=darkblue
+hi colorcolumn guibg=darkred
+hi colorcolumn ctermbg=darkred
 
 
 
@@ -1285,3 +1285,18 @@ silent! cs add ./cscope.out
 "vim trans plugin tl(may have bugs)
 nmap <silent> <c-s-K> <Esc>: GetWD<CR>
 vmap <silent> <c-s-K> <Esc>: GetVWD<CR>
+
+"you complete me
+"let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+"let g:ycm_key_invoke_completion = '<TAB>'
+"let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+"let g:ycm_autoclose_preview_window_after_insertion = 1
+
+
+"let g:ycm_key_list_select_completion = ['<c-TAB>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<c-s-TAB>', '<Up>']
+"
+"let g:SuperTabDefaultCompletionType = '<c-Tab>'
+"
+"let g:UltiSnipsExpandTrigger="<c-j>"
+"
