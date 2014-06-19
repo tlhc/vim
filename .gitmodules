@@ -1,0 +1,3 @@
+[submodule "bundle/cscope.vim"]
+	path = bundle/cscope.vim
+	url = https://github.com/brookhong/cscope.vim.git
