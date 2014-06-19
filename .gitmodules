@@ -1,3 +1,9 @@
 [submodule "bundle/cscope.vim"]
 	path = bundle/cscope.vim
 	url = https://github.com/brookhong/cscope.vim.git
+[submodule "Command-T"]
+	path = Command-T
+	url = https://github.com/wincent/Command-T.git
+[submodule "bundle/Command-T"]
+	path = bundle/Command-T
+	url = https://github.com/wincent/Command-T.git
