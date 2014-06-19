@@ -2,14 +2,8 @@
 "tong
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" User configuration
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" turn off nice effect on status bar title
-
 "pathgen
 filetype off
-"call pathogen#runtime_append_all_bundles()
 call pathogen#incubate()
 call pathogen#infect()
 call pathogen#helptags()
@@ -21,10 +15,6 @@ syntax on
 "easymotion
 let g:EasyMotion_leader_key = '<Leader>'
 let g:EasyMotion_do_shade = 1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Get out of VI's compatible mode..
 
 set nocompatible
 
@@ -39,7 +29,7 @@ function! MySys()
 endfunction
 "Set shell to be bash
 if MySys() == "unix" || MySys() == "mac"
-	set shell=bash
+	set shell=zsh
 else
 	"I have to run win32 python without cygwin
 	"set shell=E:cygwininsh
@@ -73,16 +63,7 @@ let g:mapleader = ","
 "nmap <leader>x :xa!<cr>
 "nmap <leader>w :w!<cr>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Font
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Enable syntax hl
 syntax on
-
-"高亮字符，让其不受100列限制
-:highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white
-:match OverLength '\%200v.*'
-
 "internationalization
 "I only work in Win2k Chinese version
 if has("multi_byte")
@@ -170,35 +151,8 @@ else
 	endif
 endif
 
-"Some nice mapping to switch syntax (useful if one mixes different languages in one file)
-"map <leader>1 :set syntax=cheetah<cr>
-"map <leader>2 :set syntax=xhtml<cr>
-"map <leader>3 :set syntax=python<cr>
-"map <leader>4 :set ft=javascript<cr>
-"map <leader>$ :syntax sync fromstart<cr>
 
-"Highlight current
-"if has("gui_running")
-" if exists("&cursorline")
-" set cursorline
-" endif
-"endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Fileformat
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Favorite filetype
-set ffs=unix,dos,mac
-
-"nmap <leader>fd :se ff=dos<cr>
-"nmap <leader>fu :se ff=unix<cr>
-
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM userinterface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Set 7 lines to the curors - when moving vertical..
+set ffs=unix,mac,dos
 set so=7
 
 "Turn on WiLd menu
@@ -207,12 +161,11 @@ set wildmenu
 "set rulerformat=%20(%2*%<%f%=\ %m%r\ %3l\ %c\ %p%%%)
 
 
-"The commandbar is 2 highset 
-
+"The commandbar is 1 highset 
 set cmdheight=1
 
 "Show line number
-set nu
+set number
 
 "Do not redraw, when running macros.. lazyredraw
 set lz
@@ -220,8 +173,7 @@ set lz
 "Change buffer - without saving
 set hid
 
-"Set backspace
-set backspace=eol,start,indent
+
 
 "Bbackspace and cursor keys wrap to
 set whichwrap+=<,>,h,l
@@ -241,7 +193,6 @@ set t_vb=
 "show matching bracet
 set showmatch
 
-
 "set show cmd
 set showcmd
 
@@ -251,47 +202,9 @@ set mat=8
 "Highlight search thing
 set hlsearch
 
-""""""""""""""""""""""""""""""
-" => Statusline
-""""""""""""""""""""""""""""""
-"Format the statusline
-" Nice statusbar
+"status line
 set laststatus=2
 set t_Co=256
-"	set statusline=
-"	set statusline+=%2*%-3.3n%0*/ " buffer number
-"	set statusline+=%f/ " file name
-"	set statusline+=%h%1*%m%r%w%0* " flag
-"	set statusline+=[
-"	if v:version >= 600
-"		set statusline+=%{strlen(&ft)?&ft:'none'}, " filetype
-"		set statusline+=%{&fileencoding}, " encoding
-"	endif
-"	set statusline+=%{&fileformat}] " file format
-"	if filereadable(expand("usr/share/vim//vim73/plugin/vimbuddy.vim"))
-"		set statusline+= / %{VimBuddy()} " vim buddy
-"	endif
-"	set statusline+=%= " right align
-"	set statusline+=[L=%l,C=%v]\ [P=%p%%]
-"	set statusline+=\ [%b][0x%B]\               " ASCII and byte code under cursor
-"	set statusline+=\ [%{strftime(\"%d/%m/%y\ -\ %H:%M\")}]
-
-" special statusbar for special window
-" Nice window title
-if has('title') && (has('gui_running') || &title)
-	set titlestring=
-	set titlestring+=%f/ " file name
-	set titlestring+=%h%m%r%w " flag
-	"set titlestring+=/ -/%{v:progname} " program name
-endif
-
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around and tab
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Map space to / and c-space to ?
-"map <space> /
 
 "Smart way to move btw. window
 map <C-j> <C-W>j
@@ -314,126 +227,19 @@ if exists("&showtabline")
 	set stal=2
 endif
 
-"Moving fast to front, back and 2 sides ;)
-"imap <m-$> <esc>$a
-"imap <m-0> <esc>0i
-"imap <D-$> <esc>$a
-"imap <D-0> <esc>0i
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General Autocommand
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Switch to current dir
+"General Autocommand
 map <leader>cd :cd %:p:h<cr>
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Parenthesis/bracket expanding
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"vnoremap $1 <esc>`>a)<esc>`<i(<esc>
-"")
-"vnoremap $2 <esc>`>a]<esc>`<i[<esc>
-"vnoremap $3 <esc>`>a}<esc>`<i{<esc>
-"vnoremap $$ <esc>`>a"<esc>`<i"<esc>
-"vnoremap $q <esc>`>a'<esc>`<i'<esc>
-"vnoremap $w <esc>`>a"<esc>`<i"<esc>
-
-"Map auto complete of (, ", ', [
-"http://www.vim.org/tips/tip.php?tip_id=153
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General Abbrev
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Comment for C like language
-"if has("autocmd")
-"	au BufNewFile,BufRead *.js,*.htc,*.c,*.tmpl,*.css ino $c /**<cr> **/<esc>O
-"endif
-
-"My information
-"ia xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
-"iab xname Amir Salihefendic
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings etc.
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Remap VIM 0
 map 0 ^
 
-"Move a line of text using control
-"nmap <M-j> mz:m+<cr>`z
-"nmap <M-k> mz:m-2<cr>`z
-"vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-"vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Command-line config
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"func! Cwd()
-"	let cwd = getcwd()
-"	return "e " . cwd
-"endfunc
-
-"func! DeleteTillSlash()
-"	let g:cmd = getcmdline()
-"	if MySys() == "unix" || MySys() == "mac"
-"		let g:cmd_edited = substitute(g:cmd, "(.*[/]).*", "", "")
-"	else
-"		let g:cmd_edited = substitute(g:cmd, "(.*[/]).*", "", "")
-"	endif
-"	if g:cmd == g:cmd_edited
-"		if MySys() == "unix" || MySys() == "mac"
-"			let g:cmd_edited = substitute(g:cmd, "(.*[/]).*/", "", "")
-"		else
-"			let g:cmd_edited = substitute(g:cmd, "(.*[/]).*[/]", "", "")
-"		endif
-"	endif
-"	return g:cmd_edited
-"endfunc
-
-"func! CurrentFileDir(cmd)
-"	return a:cmd . " " . expand("%:p:h") . "/"
-"endfunc
-
-"cno $q <C->eDeleteTillSlash()<cr>
-"cno $c e <C->eCurrentFileDir("e")<cr>
-"cno $tc <C->eCurrentFileDir("tabnew")<cr>
-"cno $th tabnew ~/
-"cno $td tabnew ~/Desktop/
-
-"Bash like
-"cno <C-A> <Home>
-"cno <C-E> <End>
-"cno <C-K> <C-U>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Buffer realted
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Fast open a buffer by search for a name
-"map <c-q> :sb
-
-"Open a dummy buffer for paste
-"map <leader>q :e ~/buffer<cr>
-
-"Restore cursor to file position in previous editing session
-set viminfo='10,"100,:20,%,n~/.viminfo
-
-" Buffer - reverse everything ... :)
-"map <F9> ggVGg?
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files and backup
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Turn backup off
+"Files and backup
 set nobackup
 set nowb
 set noswapfile
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Folding
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Enable folding, I find it very useful
+"Folding
 if exists("&foldenable")
 	set fen
 endif
@@ -442,23 +248,17 @@ if exists("&foldlevel")
 	set fdl=0
 endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text option
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" python script
+"Text option
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 set expandtab
-set backspace=2
+set backspace=eol,start,indent
 set smarttab
 set lbr
 "set listchars=precedes:«,extends:»,tab:▸·,trail:∙,eol:¶
 "set tw=500
 
-""""""""""""""""""""""""""""""
-" => Indent
-""""""""""""""""""""""""""""""
 "Auto indent
 set autoindent
 
@@ -474,104 +274,13 @@ endif
 set wrap
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"map <leader>sn ]
-"map <leader>sp [
-"map <leader>sa zg
-"map <leader>s? z=
-
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugin configuration
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""
-" => Yank Ring
-""""""""""""""""""""""""""""""
+"Yank Ring
 map <leader>y :YRShow<cr>
-
-""""""""""""""""""""""""""""""
-" => File explorer
-""""""""""""""""""""""""""""""
-"Split vertically
-"let g:explVertical=1
-"
-""Window size
-"let g:explWinSize=35
-"
-"let g:explSplitLeft=1
-"let g:explSplitBelow=1
-"
-""Hide some file
-"let g:explHideFiles='^.,.*.class$,.*.swp$,.*.pyc$,.*.swo$,.DS_Store$'
-"
-""Hide the help thing..
-"let g:explDetailedHelp=0
-
-""""""""""""""""""""""""""""""
-" => Minibuffer
-""""""""""""""""""""""""""""""
-" let g:miniBufExplModSelTarget = 1
-" let g:miniBufExplorerMoreThanOne = 0
-" let g:miniBufExplUseSingleClick = 1
-" let g:miniBufExplMapWindowNavVim = 1
-"" let g:miniBufExplVSplit = 25
-" let g:miniBufExplSplitBelow=0
-" let g:miniBufExplMapWindowNavArrows = 1 
-" let g:miniBufExplMapCTabSwitchBufs = 1 
-
-
-"WindowZ
-"map <c-w><c-t> :WMToggle<cr>
-"let g:bufExplorerSortBy = "name"
-
-""""""""""""""""""""""""""""""
-" => LaTeX Suite thing
-""""""""""""""""""""""""""""""
-"set grepprg=grep -r -s -n
-"let g:Tex_DefaultTargetFormat="pdf"
-"let g:Tex_ViewRule_pdf='xpdf'
-
-"if has("autocmd")
-"	"Binding
-"	au BufRead *.tex map <silent><leader><space> :w!<cr> :silent! call Tex_RunLaTeX()<cr>
-"
-"	"Auto complete some things ;)
-"	au BufRead *.tex ino <buffer> $i indent
-"	au BufRead *.tex ino <buffer> $* cdot
-"	au BufRead *.tex ino <buffer> $i item
-"	au BufRead *.tex ino <buffer> $m [<cr>]<esc>O
-"endif
-
-
-
 
 "procss the readonly file and unsave file popup confrim
 set confirm
-""""""""""""""""""""""""""""""
-" => Tag list (ctags) - not used
-""""""""""""""""""""""""""""""
-"let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
-"let Tlist_Compart_Format=1
-"let Tlist_Sort_Type = "name"
-"let Tlist_Show_Menu = 1
-"let Tlist_Exist_OnlyWindow = 1
-"let Tlist_Use_Right_Window=1
-"let Tlist_File_Fold_Auto_Close = 0
-"
-"let Tlist_Enable_Fold_Column = 0
-"let Tlist_Auto_Open=0
-"let Tlist_Auto_Update=1
-"let Tlist_Show_One_File=1
-"
 
-
-"map <C-F12> :!/usr/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 map <C-F12> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-"map <leader>t :Tlist<cr>
-"map <F4> :Tlist<cr>
 
 "set tags=+tag
 "use currentdir up dir recuit sub dir tag
@@ -587,152 +296,16 @@ let g:tagbar_autofocus = 1
 let g:tagbar_width = 35
 map <F4> :TagbarToggle<cr> 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Filetype generic
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Todo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"au BufNewFile,BufRead *.todo so ~/vim_local/syntax/amido.vim
-
-""""""""""""""""""""""""""""""
-" => VIM
-""""""""""""""""""""""""""""""
+"Buf new
 if has("autocmd") && v:version>600
 	au BufRead,BufNew *.vim map <buffer> <leader><space> :w!<cr>:source %<cr>
 endif
 
-""""""""""""""""""""""""""""""
-" => HTML related
-""""""""""""""""""""""""""""""
-" HTML entities - used by xml edit plugin
-"let xml_use_xhtml = 1
-""let xml_no_auto_nesting = 1
-"
-""To HTML
-"let html_use_css = 0
-"let html_number_lines = 0
-"let use_xhtml = 1
-
-""""""""""""""""""""""""""""""
-" => Ruby & PHP section
-""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""
-" => Python section
-""""""""""""""""""""""""""""""
-""Run the current buffer in python - ie. on leader+space
-"au BufNewFile,BufRead *.py so ~/vim_local/syntax/python.vim
-"au BufNewFile,BufRead *.py map <buffer> <leader><space> :w!<cr>:!python %<cr>
-"au BufNewFile,BufRead *.py so ~/vim_local/plugin/python_fold.vim
-
-""Set some bindings up for 'compile' of python
-"au BufNewFile,BufRead *.py set makeprg=python -c "import py_compile,sys; sys.stderr=sys.stdout; py_compile.compile(r'%')"
-"au BufNewFile,BufRead *.py set efm=%C %.%#,%A File "%f", line %l%.%#,%Z%[%^ ]%@=%m
-"au BufNewFile,BufRead *.py nmap <buffer> <F8> :w!<cr>:make<cr>
-
-""Python iMap
-"au BufNewFile,BufRead *.py set cindent
-"au BufNewFile,BufRead *.py ino <buffer> $r return
-"au BufNewFile,BufRead *.py ino <buffer> $s self
-"au BufNewFile,BufRead *.py ino <buffer> $c ##<cr>#<space><cr>#<esc>kla
-"au BufNewFile,BufRead *.py ino <buffer> $i import
-"au BufNewFile,BufRead *.py ino <buffer> $p print
-"au BufNewFile,BufRead *.py ino <buffer> $d """<cr>"""<esc>O
-
-""Run in the Python interpreter
-"function! Python_Eval_VSplit() range
-" let src = tempname()
-" let dst = tempname()
-" execute ": " . a:firstline . "," . a:lastline . "w " . src
-" execute ":!python " . src . " > " . dst
-" execute ":pedit! " . dst
-"endfunction
-"au BufNewFile,BufRead *.py vmap <F7> :call Python_Eval_VSplit()<cr>
-
-
-""""""""""""""""""""""""""""""
-" => Cheetah section
-"""""""""""""""""""""""""""""""
-"if has("eval") && has("autocmd")
-	"vim 5.8.9 on mingw donot know what is <SID>, so I avoid to use function
-	"c/cpp
-	"fun! Abbrev_cpp()
-	"	ia <buffer> cci const_iterator
-	"	ia <buffer> ccl cla
-	"	ia <buffer> cco const
-	"	ia <buffer> cdb bug
-	"	ia <buffer> cde throw
-	"	ia <buffer> cdf /** file<CR><CR>/<Up>
-	"	ia <buffer> cdg ingroup
-	"	ia <buffer> cdn /** Namespace <namespace<CR><CR>/<Up>
-	"	ia <buffer> cdp param
-	"	ia <buffer> cdt test
-	"	ia <buffer> cdx /**<CR><CR>/<Up>
-	"	ia <buffer> cit iterator
-	"	ia <buffer> cns Namespace ianamespace
-	"	ia <buffer> cpr protected
-	"	ia <buffer> cpu public
-	"	ia <buffer> cpv private
-	"	ia <buffer> csl std::list
-	"	ia <buffer> csm std::map
-	"	ia <buffer> css std::string
-	"	ia <buffer> csv std::vector
-	"	ia <buffer> cty typedef
-	"	ia <buffer> cun using Namespace ianamespace
-	"	ia <buffer> cvi virtual
-	"	ia <buffer> #i #include
-	"	ia <buffer> #d #define
-	"endfunction
-
-	"fun! Abbrev_java()
-	"	ia <buffer> #i import
-	"	ia <buffer> #p System.out.println
-	"	ia <buffer> #m public static void main(String[] args)
-	"endfunction
-
-	"fun! Abbrev_python()
-	"	ia <buffer> #i import
-	"	ia <buffer> #p print
-	"	ia <buffer> #m if __name__=="__main__":
-	"endfunction
-
-	"fun! Abbrev_aspvbs()
-	"	ia <buffer> #r Response.Write
-	"	ia <buffer> #q Request.QueryString
-	"	ia <buffer> #f Request.Form
-	"endfunction
-
-	"fun! Abbrev_js()
-	"	ia <buffer> #a if(!0){throw Error(callStackInfo());}
-	"endfunction
-
-	"augroup abbreviation
-	"	au!
-	"	au FileType javascript :call Abbrev_js()
-	"	au FileType cpp,c :call Abbrev_cpp()
-	"	au FileType java :call Abbrev_java()
-	"	au FileType python :call Abbrev_python()
-	"	au FileType aspvbs :call Abbrev_aspvbs()
-	"augroup END
-"endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => MISC
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Remove the Windows ^M
-noremap <leader>m :%s//r//g<CR>
-
-"Paste toggle - when pasting something in, don't indent.
-"set pastetoggle=<F3>
+"noremap <leader>m :%s//r//g<CR>
 
 "Super paste
 ino <C-v> <esc>:set paste<cr>mui<C-R>+<esc>mv'uV'v=:set nopaste<cr>
-
-"clipboard with xclip
-"if MySys() == "unix"
-"	vmap <F6> :!xclip -sel c<CR>
-"	map <F7> :-1r!xclip -o -seln c<CR>'z
-"endif
 
 "cscope 
 if has("cscope")
@@ -742,23 +315,6 @@ if has("cscope")
 	set csverb
 endif
 
-
-function Do_CsTag()
-	if(executable('cscope') && has("cscope") )
-		if(g:iswindows!=1)
-			silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' > cscope.files"
-		else
-			silent! execute "!dir /s/b *.c,*.cpp,*.h > cscope.files"
-			"silent! execute "del cscope.files"
-			"silent! execute "for /r . %%a in (*.c,*.cpp,*.h,*.hpp) do echo %%a >> cscope.files"
-		endif
-		silent! execute "!cscope -Rb"
-		if filereadable("cscope.out")
-			execute "cs add cscope.out"
-		endif
-	endif
-endf
-map <C-F10> :call Do_CsTag()<CR>
 "selction
 set selection=exclusive
 set selectmode=mouse,key
@@ -794,18 +350,13 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 "autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 "autocmd FileType java set omnifunc=javacomplete#Complete
 
-"
-"runtime macros/matchit.vim
-"let g:acp_behaviorSnipmateLength=1
-"quick fix
-
 nmap <F3> :NERDTreeToggle<cr>
 nmap <F5> :cn<cr>
 nmap <F6> :cp<cr>
 nmap <F8> :EasyBuffer<cr>
 nmap <s-T> :CommandT<cr>
 
-nmap <F9> :Pyrun<cr> 
+"nmap <F9> :Pyrun<cr> 
 
 nnoremap <F7> :UndotreeToggle<cr>
 
@@ -822,186 +373,8 @@ if has("persistent_undo")
 endif
 
 "rope python
-"rope python default values
-" Load rope plugin
-"
-""""let g:pymode = 1
-""""let g:pymode_path = ['~/.vim/bundle/python-mode']
-""""let g:pymode_doc = 1
-""""let g:pymode_doc_key = 'K'
-""""let g:pymode_options = 1
-""""
-""""let g:pymode_rope = 1
-""""let pymode_rope_vim_completion=1
-""""
-""""" Map keys for autocompletion
-let g:pymode_rope_autocomplete_map = '<Tab>'
-""""
-""""
-""""" Auto create and open ropeproject
-""""let g:pymode_rope_auto_project = 1
-""""
-""""" Enable autoimport
-""""let g:pymode_rope_enable_autoimport = 1
-""""
-""""" Auto generate global cache
-""""let g:pymode_rope_autoimport_generate = 1
-""""
-""""let g:pymode_rope_autoimport_underlineds = 0
-""""
-""""let g:pymode_rope_codeassist_maxfixes = 10
-""""
-""""let g:pymode_rope_sorted_completions = 1
-""""
-""""let g:pymode_rope_extended_complete = 1
-""""
-""""let g:pymode_rope_autoimport_modules = ["os","shutil","datetime"]
-""""
-""""let g:pymode_rope_confirm_saving = 1
-""""
-""""let g:pymode_rope_global_prefix = "<C-x>p"
-""""
-""""let g:pymode_rope_local_prefix = "<C-c>r"
-""""
-""""let g:pymode_rope_vim_completion = 1
-""""
-""""let g:pymode_rope_guess_project = 1
-""""
-""""let g:pymode_rope_goto_def_newwin = ""
-""""
-""""let g:pymode_rope_always_show_complete_menu = 0
-""""
-""""
-"""" let g:pymode_lint_async = 1
-""""
-""""
-""""
-""""" Set key 'R' for run python code
-"""" let g:pymode_run = 1
-"""" let g:pymode_run_key = '<Leader>r'
-""""
-""""" Load pylint code plugin
-"""" let g:pymode_lint = 1
-""""
-"""" let g:pymode_lint_buffer = 0
-"""" let g:pymode_updatetime = 1
-""""" Switch pylint, pyflakes, pep8, mccabe code-checkers
-""""" " Can have multiply values "pep8,pyflakes,mcccabe"
-""""" " Choices are pyflakes, pep8, mccabe, pylint, pep257
-""""let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
-""""
-""""" Skip errors and warnings
-""""" E.g. "E501,W002", "E2,W" (Skip all Warnings and Errors startswith E2) and etc
-""""let g:pymode_lint_ignore = "E501"
-""""
-""""" Select errors and warnings
-""""" E.g. "E4,W"
-""""let g:pymode_lint_select = ""
-""""
-""""" Run linter on the fly
-""""let g:pymode_lint_onfly = 0
-""""
-""""" Pylint configuration file
-""""" If file not found use 'pylintrc' from python-mode plugin directory
-""""let g:pymode_lint_config = "$HOME/.pylintrc"
-""""
-""""" Check code every save
-""""let g:pymode_lint_write = 0
-""""
-""""" Auto open cwindow if errors were found
-""""let g:pymode_lint_cwindow = 1
-""""
-""""" Show error message if cursor placed at the error line
-""""let g:pymode_lint_message = 1
-""""
-""""" Auto jump on first error
-""""let g:pymode_lint_jump = 0
-""""
-""""" Hold cursor in current window
-""""" when quickfix is open
-""""let g:pymode_lint_hold = 0
-""""
-""""" Place error signs
-""""let g:pymode_lint_signs = 1
-""""
-""""" Maximum allowed mccabe complexity
-""""let g:pymode_lint_mccabe_complexity = 8
-""""
-""""" Minimal height of pylint error window
-""""let g:pymode_lint_minheight = 3
-""""
-""""" Maximal height of pylint error window
-""""let g:pymode_lint_maxheight = 6
-""""
-""""" Symbol definition
-""""let g:pymode_lint_todo_symbol = 'WW'
-""""let g:pymode_lint_comment_symbol = 'CC'
-""""let g:pymode_lint_visual_symbol = 'RR'
-""""let g:pymode_lint_error_symbol = 'EE'
-""""let g:pymode_lint_info_symbol = 'II'
-""""let g:pymode_lint_pyflakes_symbol = 'FF'
-""""
-""""let g:pymode_breakpoint_key = '<leader><leader>b'
-""""let g:pymode_breakpoint = 1
-""""
-""""let g:pymode_indent = 1
-""""
-""""" do NOT remove unused whitespaces
-""""let g:pymode_utils_whitespaces = 0
-""""
-""""let  g:pymode_folding = 1
-""""" Enable pymode's custom syntax highlighting
-""""let g:pymode_syntax = 1
-""""
-""""" Enable all python highlightings
-""""let g:pymode_syntax_all = 1
-""""
-""""" Highlight "print" as a function
-""""let g:pymode_syntax_print_as_function = 0
-""""
-""""" Highlight indentation errors
-""""let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-""""
-""""" Highlight trailing spaces
-""""let g:pymode_syntax_space_errors = g:pymode_syntax_all
-""""
-""""" Highlight string formatting
-""""let g:pymode_syntax_string_formatting = g:pymode_syntax_all
-""""
-""""" Highlight str.format syntax
-""""let g:pymode_syntax_string_format = g:pymode_syntax_all
-""""
-""""" Highlight string.Template syntax
-""""let g:pymode_syntax_string_templates = g:pymode_syntax_all
-""""
-""""" Highlight doc-tests
-""""let g:pymode_syntax_doctests = g:pymode_syntax_all
-""""
-""""" Highlight builtin objects (__doc__, self, etc)
-""""let g:pymode_syntax_builtin_objs = g:pymode_syntax_all
-""""
-""""" Highlight builtin functions
-""""let g:pymode_syntax_builtin_funcs = g:pymode_syntax_all
-""""
-""""" Highlight exceptions
-""""let g:pymode_syntax_highlight_exceptions = g:pymode_syntax_all
-""""
-""""" Highlight equal operator
-""""let g:pymode_syntax_highlight_equal_operator = g:pymode_syntax_all
-""""
-""""" Highlight stars operator
-""""let g:pymode_syntax_highlight_stars_operator = g:pymode_syntax_all
-""""
-""""" Highlight `self`
-""""let g:pymode_syntax_highlight_self = g:pymode_syntax_all
-""""
-""""" For fast machines
-""""let g:pymode_syntax_slow_sync = 0
-""""
 
-
-
-"clang_config
+"clang_config(now use ycm)
 "let g:clang_auto_select=1
 "let g:clang_periodic_quickfix=0
 "let g:clang_snippets=1
@@ -1034,57 +407,55 @@ let g:pymode_rope_autocomplete_map = '<Tab>'
 "nmap <C-F11>:!make CC='~/.vim/bundle/clang_complete/bin/cc_args.py gcc' CXX='~/.vim/bundle/clang_complete/bin/cc_args.py g++' -B <cr>
 "let g:SuperTabMappingForward="<tab>"
 
-"set colorcolumn=80
 
 let g:splice_initial_mode = "compare"
 let g:splice_initial_layout_grid = 2
 let g:splice_initial_layout_compare = 1
 
 
-
-" // The switch of the Source Explorer 
+" The switch of the Source Explorer 
 nmap <F10> :SrcExplToggle<CR> 
 
-" // Set the height of Source Explorer window 
+" Set the height of Source Explorer window 
 let g:SrcExpl_winHeight = 8 
 
-" // Set 100 ms for refreshing the Source Explorer 
+" Set 100 ms for refreshing the Source Explorer 
 let g:SrcExpl_refreshTime = 100 
 
-" // Set "Enter" key to jump into the exact definition context 
+" Set "Enter" key to jump into the exact definition context 
 let g:SrcExpl_jumpKey = "<ENTER>" 
 
-" // Set "Space" key for back from the definition context 
+" Set "Space" key for back from the definition context 
 let g:SrcExpl_gobackKey = "<SPACE>" 
 
-" // In order to Avoid conflicts, the Source Explorer should know what plugins 
-" // are using buffers. And you need add their bufname into the list below 
-" // according to the command ":buffers!" 
+" In order to Avoid conflicts, the Source Explorer should know what plugins 
+" are using buffers. And you need add their bufname into the list below 
+" according to the command ":buffers!" 
 let g:SrcExpl_pluginList = [ 
         \ "__Tag_List__", 
         \ "_NERD_tree_", 
         \ "Source_Explorer" 
     \ ] 
 
-" // Enable/Disable the local definition searching, and note that this is not 
-" // guaranteed to work, the Source Explorer doesn't check the syntax for now. 
-" // It only searches for a match with the keyword according to command 'gd' 
+" Enable/Disable the local definition searching, and note that this is not 
+" guaranteed to work, the Source Explorer doesn't check the syntax for now. 
+" It only searches for a match with the keyword according to command 'gd' 
 let g:SrcExpl_searchLocalDef = 1 
 
-" // Do not let the Source Explorer update the tags file when opening 
+" Do not let the Source Explorer update the tags file when opening 
 let g:SrcExpl_isUpdateTags = 0 
 
-" // Use 'Exuberant Ctags' with '--sort=foldcase -R .' or '-L cscope.files' to 
-" // create/update the tags file 
+" Use 'Exuberant Ctags' with '--sort=foldcase -R .' or '-L cscope.files' to 
+" create/update the tags file 
 let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ." 
 
-" // Set "<F12>" key for updating the tags file artificially 
+" Set "<F12>" key for updating the tags file artificially 
 let g:SrcExpl_updateTagsKey = "<C-F11>" 
 
-" // Set "<F3>" key for displaying the previous definition in the jump list 
+" Set "<F3>" key for displaying the previous definition in the jump list 
 let g:SrcExpl_prevDefKey = "<C-3>" 
 
-" // Set "<F4>" key for displaying the next definition in the jump list 
+" Set "<F4>" key for displaying the next definition in the jump list 
 let g:SrcExpl_nextDefKey = "<C-4>" 
 
 "fuzzfinder
@@ -1140,15 +511,6 @@ let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1 
 let g:miniBufExplModSelTarget = 1 
 
-" MiniBufExpl Colors
-"hi MBENormal               guifg=#808080 guibg=fg
-"hi MBEChanged              guifg=#CD5907 guibg=fg
-"hi MBEVisibleNormal        guifg=#5DC2D6 guibg=fg
-"hi MBEVisibleChanged       guifg=#F1266F guibg=fg
-"hi MBEVisibleActiveNormal  guifg=#A6DB29 guibg=fg
-"hi MBEVisibleActiveChanged guifg=#F1266F guibg=fg
-"
-
 map <leader>gc :CscopeGen<CR>
 ""Default settings are here, you can modify it to create your own key mappings.
 "
@@ -1172,7 +534,6 @@ map <leader>gc :CscopeGen<CR>
 "    map <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
 "    map <leader>l :call ToggleLocationList()<CR>
 "
-
 
 "syntastic
 let g:syntastic_error_symbol='✗'
@@ -1212,8 +573,6 @@ function ShowError()
 endfunction
 command -nargs=0 -bar EE call ShowError() 
 
-
-
 if exists('+colorcolumn')
   set colorcolumn=80
 else
@@ -1221,7 +580,6 @@ else
 endif
 hi colorcolumn guibg=darkred
 hi colorcolumn ctermbg=darkred
-
 
 
 let g:fullscreen = 0
@@ -1244,15 +602,12 @@ let g:xptemplate_vars="$author=tlhc&$email=marst629@gmail.com"
 let g:cscope_cmd = '/usr/bin/cscope'
 
 "
-"dash 
+"for mac dash 
 "
-
 let g:dash_map = {
             \ 'python'     : 'p2',
             \ 'cpp'        : 'cc',
             \ }
-
-
 
 "let g:C_CplusCFlags = '-Wall -g -std=c++11 -O0 -c '      " C++ compiler flags: compile, don't optimize
 "let g:C_CplusLFlags = '-Wall -g -std=c++11 -O0'         " C++ compiler flags: link   , don't optimize
@@ -1291,30 +646,22 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 "let g:SuperTabDefaultCompletionType = '<c-Tab>'
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-
 let g:ycm_error_symbol='✗'
 let g:ycm_warning_symbol='⚠'
-
-
 
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'"
 let g:ycm_collect_identifiers_from_tags_files = 1
-"
-
-"
-"
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-"
-"
 "let g:ycm_server_use_vim_stdout = 1
 "let g:ycm_server_log_level = 'debug'
 
+"UltiSnips
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
 silent! cs add /usr/include/eXosip2/cscope.out
-
 colorscheme autumnleaf
-
+"Gist vim
 let g:gist_show_privates = 1
