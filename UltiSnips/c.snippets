@@ -3,7 +3,11 @@ snippet ma "main"
 #include <stdlib.h>
 #include <unistd.h>
 
+#define UNUSED(x) (void)(x)
+
 int main(int argc, char *argv[]) {
+	UNUSED(argc);
+	UNUSED(argv);
 
     return 0;
 }
@@ -15,3 +19,32 @@ snippet tld "TL_DEBUG"
 #endif
 endsnippet
 
+
+snippet pp "printf"
+printf("%s\n", "");
+endsnippet
+
+snippet if "if"
+if() {
+
+}
+endsnippet
+
+snippet ife "ife"
+if() {
+
+} else {
+
+}
+endsnippet
+
+snippet sw "switch"
+switch() {
+    case :
+	break;
+    case :
+	break;
+	default:
+	break;
+}
+endsnippet

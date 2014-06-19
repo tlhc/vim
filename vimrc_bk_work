@@ -149,7 +149,8 @@ if has("gui_running")
 		"colorscheme default
 		"colorscheme elflord
 		"colorscheme seoul256-light
-        colorscheme default
+        "colorscheme default
+		colorscheme autumnleaf
         "colorscheme desertEx
 		"set guifont=Monaco:h14
 		set guifont=DejaVuSansMono\ 12
@@ -158,8 +159,9 @@ if has("gui_running")
 else
 	if v:version > 601
 		"set background=dark
-		colorscheme default
+		"colorscheme default
 		"colorscheme molokai
+		colorscheme autumnleaf
 		"colorscheme seoul256-light
 		"colorscheme seoul256-light
 		"colorscheme desert
@@ -1000,40 +1002,31 @@ let g:pymode_rope_autocomplete_map = '<Tab>'
 
 
 "clang_config
-let g:clang_auto_select=1
-"let g:clang_complete_copen=1
-let g:clang_hl_errors=1
-let g:clang_periodic_quickfix=0
-let g:clang_snippets=1
-
-let g:clang_snippets_engine="clang_complete"
-"let g:clang_snippets_engine="snipmate"
-"let g:clang_trailing_placeholder=1
-
-let g:clang_conceal_snippets=1
-"set concealcursor=in
-"set conceallevel=2
-
-
-let g:clang_exec="clang"
-"let g:clang_user_options=""
-"let g:clang_user_options='2>/dev/null || exit 0"'
-let g:clang_auto_user_options="path, .clang_complete"
-let g:clang_use_library=1
-
-
-let g:clang_library_path="/usr/lib/"
+"let g:clang_auto_select=1
+"let g:clang_periodic_quickfix=0
+"let g:clang_snippets=1
+"
+"let g:clang_snippets_engine="clang_complete"
+"
+"let g:clang_conceal_snippets=1
+"
+"
+"let g:clang_exec="clang"
+"let g:clang_auto_user_options="path, .clang_complete"
+"let g:clang_use_library=1
+"
+"
 "let g:clang_library_path="/usr/lib/"
-"let g:clang_sort_algo="priority"
-let g:clang_complete_macros=1
-let g:clang_complete_patterns=1
-
-let g:clang_hl_errors=1
-let g:clang_complete_copen=1
+"let g:clang_complete_macros=1
+"let g:clang_complete_patterns=1
+"
+"let g:clang_hl_errors=1
+"let g:clang_complete_copen=1
+"let g:clang_user_options = '-std=c++11'
 
 "map for c code check
 
-nnoremap <Leader>q :call g:ClangUpdateQuickFix()<CR>
+"nnoremap <Leader>q :call g:ClangUpdateQuickFix()<CR>
 "nnoremap <Leader>r :call ClangGetReferences()<CR>
 "nnoremap <Leader>d :call ClangGetDeclarations()<CR>
 "nnoremap <Leader>s :call ClangGetSubclasses()<CR>
@@ -1098,6 +1091,7 @@ let g:SrcExpl_nextDefKey = "<C-4>"
 
 let g:fuf_buffertag_ctagsPath = '/usr/bin/ctags'
 nmap <c-s-f> :FufBufferTag<CR>
+nmap <c-s-g> :FufBufferTagAll<CR>
 
 
 "qt help plugin
@@ -1105,9 +1099,7 @@ let g:qthelp_tags='/usr/local/Trolltech/Qt-4.8.4/doc/tags'
 "let g:qthelp_tags+='/usr/local/qwt-6.1.0-rc3/doc/tags'
 let g:qthelp_browser='/opt/google/chrome/google-chrome'
 
-nmap <c-s-g> :QHelpOnThis<CR>
-"just for the target
-nmap <C-F7> :! ./CMDSim<CR>
+"nmap <c-s-g> :QHelpOnThis<CR>
 
 "vim easy align
 vnoremap <silent> <Enter> :EasyAlign<cr>
@@ -1189,7 +1181,8 @@ let g:syntastic_warning_symbol='⚠'
 "let g:syntastic_cpp_include_dirs=['/usr/local/Trolltech/Qt-4.8.4/include/', '/usr/share/qt4/mkspecs/linux-g++/', '/usr/include/qt4/QtCore', '/usr/include/qt4/QtGui', '/usr/local/qwt-6.1.0-rc3/include', '/usr/local/Trolltech/Qt-4.8.4/include/QtCore/', '/usr/local/Trolltech/Qt-4.8.4/include/QtGui/'] 
 "
 
-
+let g:syntastic_cpp_compiler='clang++'
+let g:syntastic_cpp_compiler_options=' -std=c++11 -stdlib=libc++'
 
 "ToggleQuickfix window
 function ToggleQuickfix() 
@@ -1250,7 +1243,6 @@ let g:xptemplate_vars="$author=tlhc&$email=marst629@gmail.com"
 "cscope.vim config for mac
 let g:cscope_cmd = '/usr/bin/cscope'
 
-"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 "
 "dash 
 "
@@ -1260,8 +1252,7 @@ let g:dash_map = {
             \ 'cpp'        : 'cc',
             \ }
 
-let g:syntastic_cpp_compiler='clang++'
-let g:syntastic_cpp_compiler_options=' -std=c++11 -stdlib=libc++'
+
 
 "let g:C_CplusCFlags = '-Wall -g -std=c++11 -O0 -c '      " C++ compiler flags: compile, don't optimize
 "let g:C_CplusLFlags = '-Wall -g -std=c++11 -O0'         " C++ compiler flags: link   , don't optimize
@@ -1287,16 +1278,43 @@ nmap <silent> <c-s-K> <Esc>: GetWD<CR>
 vmap <silent> <c-s-K> <Esc>: GetVWD<CR>
 
 "you complete me
-"let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf='./.ycm_extra_conf.py'
+let g:ycm_extra_conf_globlist = ['./.ycm_extra_conf.py']
+let g:ycm_confirm_extra_conf = 1
 "let g:ycm_key_invoke_completion = '<TAB>'
 "let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
-"let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
-
-"let g:ycm_key_list_select_completion = ['<c-TAB>', '<Down>']
-"let g:ycm_key_list_previous_completion = ['<c-s-TAB>', '<Up>']
+"let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
 "
 "let g:SuperTabDefaultCompletionType = '<c-Tab>'
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+
+let g:ycm_error_symbol='✗'
+let g:ycm_warning_symbol='⚠'
+
+
+
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'"
+let g:ycm_collect_identifiers_from_tags_files = 1
 "
-"let g:UltiSnipsExpandTrigger="<c-j>"
+
 "
+"
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+"
+"
+"let g:ycm_server_use_vim_stdout = 1
+"let g:ycm_server_log_level = 'debug'
+
+silent! cs add /usr/include/eXosip2/cscope.out
+
+colorscheme autumnleaf
+
+let g:gist_show_privates = 1

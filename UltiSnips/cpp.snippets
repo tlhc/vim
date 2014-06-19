@@ -2,5 +2,36 @@ snippet cout "the cout default"
 cout << " " << endl;
 endsnippet
 
+snippet ma "main" 
+#include <iostream>
+using namespace std;
+#define UNUSED(x) (void)(x)
+
+int main(int argc, char *argv[]) {
+	UNUSED(argc);
+	UNUSED(argv);
+
+    return 0;
+}
+endsnippet
+
+snippet printf "printf" 
+printf("%s\n", " ");
+endsnippet
+
+snippet if "if" 
+if() {
+	
+}
+endsnippet
+
+
+snippet ife "ife" 
+if() {
+	
+} else {
+	
+}
+endsnippet
 
 
