@@ -1,7 +1,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "tong
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 "pathgen
 filetype off
 call pathogen#incubate()
@@ -665,3 +664,4 @@ silent! cs add /usr/include/eXosip2/cscope.out
 colorscheme autumnleaf
 "Gist vim
 let g:gist_show_privates = 1
+
