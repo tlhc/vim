@@ -23,12 +23,17 @@ set -o nounset                              # Treat unset variables as an error
 
 
 dir=`ls`
-
+branch_info=""
 for i in $dir ; do
     if [ -d "$i" ] ; then 
         cd "$i"
         echo "current dir: $i" 
-        git checkout master
+        branch_info=""
+        branch_info=`git branch -a`
+        branch_info=`echo $branch_info | awk -F "->" '{print $2}' | awk -F " " '{print $1}' | \
+            awk -F "/" '{print $2}'`
+        echo $branch_info
+        git checkout $branch_info
         echo "done"
         cd ..
     fi
