@@ -1,6 +1,9 @@
 #!/bin/bash - 
 set -o nounset                              # Treat unset variables as an error
 
+cd ~/.vim
+git submodule update --init
+cd ~/.vim/bundle
 dir=`ls`
 branch_info=""
 for i in $dir ; do
