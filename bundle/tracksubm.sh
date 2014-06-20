@@ -2,9 +2,9 @@
 set -o nounset                              # Treat unset variables as an error
 
 #may be should use git submodule foreach git pull
-cd ~/.vim
+cd ..
 git submodule update --init
-cd ~/.vim/bundle
+cd ./bundle
 dir=`ls`
 branch_info=""
 for i in $dir ; do
