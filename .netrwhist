@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/mars/Downloads/jrtplib-3.9.1'
-let g:netrw_dirhist_2='/home/mars/ACHIVE/siplibs/bk/libosip2-3.6.0/src/osip2'
-let g:netrw_dirhist_3='/home/mars/ACHIVE/ycm_bk1'
-let g:netrw_dirhist_4='/home/mars/.vim'
-let g:netrw_dirhist_5='/tmp/vim/.git'
