@@ -1,6 +1,7 @@
 #!/bin/bash - 
 set -o nounset                              # Treat unset variables as an error
 
+#may be should use git submodule foreach git pull
 cd ~/.vim
 git submodule update --init
 cd ~/.vim/bundle
