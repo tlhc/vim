@@ -1,1 +1,7 @@
 *MY VIM BACKUP
+---
+use submodule and pathogen
+1.git clone https://github.com/tlhc/vim.git
+2.cd /bundle && ./tracksubm.sh
+
+(up.sh use for update submodule)
