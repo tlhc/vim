@@ -4,6 +4,6 @@
 Session.vim
 .netrwhist
 *~
-doc/tags
++/doc/tags
 bundle/vim-plugin-viewdoc/.gitignore
 bundle/YankRing.vim/.gitignore
