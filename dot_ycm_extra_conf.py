@@ -64,22 +64,13 @@ flags = [
 '-isystem',
 '/usr/include'
 '-isystem',
-'/usr/include/c++',
-'-isystem',
 '/usr/local/include',
 '-isystem',
-'/usr/lib/gcc/i686-linux-gnu/4.6/../../../../include/c++/4.6',
-'-isystem',
-'/usr/lib/gcc/i686-linux-gnu/4.6/../../../../include/c++/4.6/i686-linux-gnu',
-'-isystem',
-'/usr/lib/gcc/i686-linux-gnu/4.6/../../../../include/c++/4.6/backward',
-'-isystem',
-'/usr/local/include',
+'/usr/include/c++/4.6',
 '-isystem',
 '/usr/include/clang/3.3/include',
 '-isystem',
 '/usr/include/i386-linux-gnu',
-
 
 #for QT
 #'-DQT_CORE_LIB',
