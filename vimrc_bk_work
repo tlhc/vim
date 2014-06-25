@@ -130,8 +130,9 @@ if has("gui_running")
 		"colorscheme elflord
 		"colorscheme seoul256-light
         "colorscheme default
-		colorscheme autumnleaf
+		"colorscheme autumnleaf
         "colorscheme desertEx
+		colorscheme molokai
 		"set guifont=Monaco:h14
 		set guifont=DejaVuSansMono\ 12
 
@@ -140,8 +141,8 @@ else
 	if v:version > 601
 		"set background=dark
 		"colorscheme default
-		"colorscheme molokai
-		colorscheme autumnleaf
+		colorscheme molokai
+		"colorscheme autumnleaf
 		"colorscheme seoul256-light
 		"colorscheme seoul256-light
 		"colorscheme desert
@@ -531,7 +532,6 @@ map <leader>gc :CscopeGen<CR>
 "    map <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
 "    " i: Find files #including this file
 "    map <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
-"    map <leader>l :call ToggleLocationList()<CR>
 "
 
 "syntastic
@@ -557,7 +557,7 @@ function ToggleQuickfix()
         cclose 
     else 
         " open qf window as last window, fullwidth 
-        bot copen 
+         bot copen 
     endif 
     " go back to where we started from 
     if (winnr >= qfw) && (winnr > 1) 
@@ -611,9 +611,6 @@ let g:dash_map = {
 "let g:C_CplusCFlags = '-Wall -g -std=c++11 -O0 -c '      " C++ compiler flags: compile, don't optimize
 "let g:C_CplusLFlags = '-Wall -g -std=c++11 -O0'         " C++ compiler flags: link   , don't optimize
 
-nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
-nmap <script> <silent> <leader>g :call ToggleQuickfixList()<CR>
-
 
 nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR> 
 nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>  
@@ -661,8 +658,13 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 silent! cs add /usr/include/eXosip2/cscope.out
-colorscheme autumnleaf
+"colorscheme autumnleaf
 "Gist vim
 let g:gist_show_privates = 1
 command B !make
 command C !make clean
+
+"for vim-togglist
+nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
+nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
+
