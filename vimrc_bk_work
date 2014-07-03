@@ -3,7 +3,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "pathgen
 filetype off
-call pathogen#incubate()
+"call pathogen#incubate()
 call pathogen#infect()
 call pathogen#helptags()
 
@@ -668,3 +668,5 @@ command C !make clean
 nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
 nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
 
+
+let g:C_CFlags = '-Wall -std=c99 -g -O0 -c'
