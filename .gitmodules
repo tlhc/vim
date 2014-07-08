@@ -79,6 +79,7 @@
 [submodule "bundle/vim-plugin-viewdoc"]
 	path = bundle/vim-plugin-viewdoc
 	url = https://github.com/powerman/vim-plugin-viewdoc.git
+    ignore = dirty
 [submodule "bundle/vim-powerline"]
 	path = bundle/vim-powerline
 	url = https://github.com/Lokaltog/vim-powerline.git
