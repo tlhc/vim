@@ -3,7 +3,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "pathgen
 filetype off
-call pathogen#incubate()
+"call pathogen#incubate()
 call pathogen#infect()
 call pathogen#helptags()
 
@@ -306,6 +306,8 @@ if has("cscope")
 	set cst
 	set csverb
 endif
+
+silent! cs add ./cscope.out
 
 "selction
 set selection=exclusive
