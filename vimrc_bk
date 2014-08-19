@@ -679,6 +679,6 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 "Gist vim
 let g:gist_show_privates = 1
 
-
+set vb
 
 
