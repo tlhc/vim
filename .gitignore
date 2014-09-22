@@ -7,4 +7,5 @@ Session.vim
 doc/tags
 +/doc/tags
 bundle/vim-plugin-viewdoc/.gitignore
+bundle/undotree/.gitignore
 .ropeproject/
