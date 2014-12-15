@@ -128,11 +128,11 @@ if has("gui_running")
 		"colorscheme ps_color
 		"colorscheme default
 		"colorscheme elflord
-		"colorscheme seoul256-light
+		colorscheme seoul256-light
         "colorscheme default
 		"colorscheme autumnleaf
         "colorscheme desertEx
-		colorscheme molokai
+		"colorscheme molokai
 		"set guifont=Monaco:h14
 		set guifont=DejaVuSansMono\ 12
 
@@ -141,9 +141,9 @@ else
 	if v:version > 601
 		"set background=dark
 		"colorscheme default
-		colorscheme molokai
+		"colorscheme molokai
 		"colorscheme autumnleaf
-		"colorscheme seoul256-light
+		colorscheme seoul256-light
 		"colorscheme seoul256-light
 		"colorscheme desert
 		"set guifont=DejaVuSansMono\ 13
@@ -172,8 +172,6 @@ set lz
 
 "Change buffer - without saving
 set hid
-
-
 
 "Bbackspace and cursor keys wrap to
 set whichwrap+=<,>,h,l
@@ -226,7 +224,6 @@ endif
 if exists("&showtabline")
 	set stal=2
 endif
-
 
 "General Autocommand
 map <leader>cd :cd %:p:h<cr>
@@ -282,13 +279,12 @@ set confirm
 
 map <C-F12> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
-"set tags=+tag
+set tags=+tag
 "use currentdir up dir recuit sub dir tag
-"set tags+=./tags,./../tags,./*/tag
+set tags+=./tags,./../tags,./*/tag
 "set tags+=/home/mars/lib_indx/tags/python/tags
 "set tags+=/home/mars/lib_indx/tags/linux_src/tags
 "set tags+=/home/mars/src/qt484/tags
-
 
 "tagbar setting
 let g:tagbar_ctags_bin='/usr/bin/ctags'
@@ -343,12 +339,6 @@ let g:Powerline_cache_enabled = 1
 "    \ , 'LINE'  : [0x2b61]
 "\}
 "
-"
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-"autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType java set omnifunc=javacomplete#Complete
 
 nmap <F3> :NERDTreeToggle<cr>
 nmap <F5> :cn<cr>
@@ -364,48 +354,12 @@ nnoremap <F7> :UndotreeToggle<cr>
 "add python 3.3
 "silent! cs add ~/lib_indx/cscope/python/3.3/cscope.out
 
-
 "add qt484
 "silent! cs add /home/mars/src/qt484/cscope.out
 if has("persistent_undo")
     set undodir='/home/mars/undo_tree/'
     set undofile
 endif
-
-"rope python
-
-"clang_config(now use ycm)
-"let g:clang_auto_select=1
-"let g:clang_periodic_quickfix=0
-"let g:clang_snippets=1
-"
-"let g:clang_snippets_engine="clang_complete"
-"
-"let g:clang_conceal_snippets=1
-"
-"
-"let g:clang_exec="clang"
-"let g:clang_auto_user_options="path, .clang_complete"
-"let g:clang_use_library=1
-"
-"
-"let g:clang_library_path="/usr/lib/"
-"let g:clang_complete_macros=1
-"let g:clang_complete_patterns=1
-"
-"let g:clang_hl_errors=1
-"let g:clang_complete_copen=1
-"let g:clang_user_options = '-std=c++11'
-
-"map for c code check
-
-"nnoremap <Leader>q :call g:ClangUpdateQuickFix()<CR>
-"nnoremap <Leader>r :call ClangGetReferences()<CR>
-"nnoremap <Leader>d :call ClangGetDeclarations()<CR>
-"nnoremap <Leader>s :call ClangGetSubclasses()<CR>
-
-"nmap <C-F11>:!make CC='~/.vim/bundle/clang_complete/bin/cc_args.py gcc' CXX='~/.vim/bundle/clang_complete/bin/cc_args.py g++' -B <cr>
-"let g:SuperTabMappingForward="<tab>"
 
 
 let g:splice_initial_mode = "compare"
@@ -461,9 +415,10 @@ let g:SrcExpl_nextDefKey = "<C-4>"
 "fuzzfinder
 
 let g:fuf_buffertag_ctagsPath = '/usr/bin/ctags'
-nmap <c-s-f> :FufBufferTag<CR>
-nmap <c-s-g> :FufBufferTagAll<CR>
-
+nmap <c-s-f> :FufBufferTagAll<CR>
+"nmap <leader>fdd :FufDirWithCurrentBufferDir<CR>
+"nmap <leader>fd :FufDir<CR>
+"nmap <leader>fb :FufBuffer<CR>
 
 "qt help plugin
 let g:qthelp_tags='/usr/local/Trolltech/Qt-4.8.4/doc/tags'
@@ -505,34 +460,12 @@ let g:easy_align_delimiters = {
 ""let g:easytags_include_members = 1
 
 
-
 let g:miniBufExplMapWindowNavVim = 1 
 let g:miniBufExplMapWindowNavArrows = 1 
 let g:miniBufExplMapCTabSwitchBufs = 1 
 let g:miniBufExplModSelTarget = 1 
 
 map <leader>gc :CscopeGen<CR>
-""Default settings are here, you can modify it to create your own key mappings.
-"
-"    " in case your cscope execute is not in system path.
-"    " let g:cscope_cmd = 'D:/tools/vim/cscope.exe'
-"    " s: Find this C symbol
-"    map <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>
-"    " g: Find this definition
-"    map <leader>fg :call CscopeFind('g', expand('<cword>'))<CR>
-"    " d: Find functions called by this function
-"    map <leader>fd :call CscopeFind('d', expand('<cword>'))<CR>
-"    " c: Find functions calling this function
-"    map <leader>fc :call CscopeFind('c', expand('<cword>'))<CR>
-"    " t: Find this text string
-"    map <leader>ft :call CscopeFind('t', expand('<cword>'))<CR>
-"    " e: Find this egrep pattern
-"    map <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>
-"    " f: Find this file
-"    map <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
-"    " i: Find files #including this file
-"    map <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
-"
 
 "syntastic
 let g:syntastic_error_symbol='✗'
@@ -611,7 +544,6 @@ let g:dash_map = {
 "let g:C_CplusCFlags = '-Wall -g -std=c++11 -O0 -c '      " C++ compiler flags: compile, don't optimize
 "let g:C_CplusLFlags = '-Wall -g -std=c++11 -O0'         " C++ compiler flags: link   , don't optimize
 
-
 nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR> 
 nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>  
 nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>  
@@ -629,7 +561,7 @@ nmap <silent> <c-s-K> <Esc>: GetWD<CR>
 vmap <silent> <c-s-K> <Esc>: GetVWD<CR>
 
 "you complete me
-"let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf='~/.vim/dot_ycm_extra_conf.py'
 let g:ycm_global_ycm_extra_conf='./.ycm_extra_conf.py'
 let g:ycm_extra_conf_globlist = ['./.ycm_extra_conf.py']
 let g:ycm_confirm_extra_conf = 1
@@ -668,5 +600,12 @@ command C !make clean
 nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
 nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
 
-
 let g:C_CFlags = '-Wall -std=c99 -g -O0 -c'
+
+let g:pymode_rope_completion = 0
+"let g:pymode_rope_complete_on_dot = 1
+"let g:pymode_rope_completion_bind = '<C-j>'
+
+nmap <leader>mm :%s/\r//g<CR>
+
+"let g:gist_use_password_in_gitconfig = 1
