@@ -286,6 +286,30 @@ flags = [
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/c++/v1',
 '-isystem',
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include',
+
+# GNUStep for ubuntu
+'-I', '/usr/include/GNUstep/gnustep/unicode',
+'-I', '/usr/include/GNUstep/gnustep/gui',
+'-I', '/usr/include/GNUstep/InterfaceBuilder',
+'-I', '/usr/include/GNUstep/Cocoa',
+'-I', '/usr/include/GNUstep/Frameworks/PreferencePanes.framework/Versions/1',
+'-I', '/usr/include/GNUstep/Frameworks/FSNode.framework/Versions/0',
+'-I', '/usr/include/GNUstep/Frameworks/Cynthiune.framework/Versions/0',
+'-I', '/usr/include/GNUstep/Frameworks/Operation.framework/Versions/1',
+'-I', '/usr/include/GNUstep/Frameworks/Inspector.framework/Versions/0',
+'-I', '/usr/include/GNUstep/Frameworks/TalkSoupBundles.framework/Versions/0.990',
+'-I', '/usr/include/GNUstep/Frameworks/ProjectCenter.framework/Versions/0.6.0',
+'-I', '/usr/include/GNUstep/Frameworks/ProjectCenter.framework/Versions/0.6.0/Protocols',
+'-I', '/usr/include/GNUstep/Frameworks/ProjectCenter.framework/Versions/0.6.0',
+'-I', '/usr/include/GNUstep/GormCore',
+'-I', '/usr/include/GNUstep/Foundation',
+'-I', '/usr/include/GNUstep/GNUstepGUI',
+'-I', '/usr/include/GNUstep/GormObjCHeaderParser',
+'-I', '/usr/include/GNUstep/Renaissance',
+'-I', '/usr/include/GNUstep/GormPrefs',
+'-I', '/usr/include/GNUstep/DBKit',
+'-I', '/usr/include/GNUstep/GNUstepBase',
+'-I', '/usr/include/GNUstep/AppKit',
 ]
 
 
