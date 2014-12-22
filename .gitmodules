@@ -110,3 +110,7 @@
 	path = bundle/zealvim.vim
 	url = https://github.com/KabbAmine/zeavim.vim.git
     ignore = dirty
+[submodule "bundle/investigate.vim"]
+	path = bundle/investigate.vim
+	url = https://github.com/Keithbsmiley/investigate.vim.git
+    ignore = dirty
