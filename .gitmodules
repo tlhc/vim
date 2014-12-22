@@ -105,3 +105,7 @@
 [submodule "bundle/python_match"]
 	path = bundle/python_match
 	url = https://github.com/vim-scripts/python_match.vim.git
+[submodule "bundle/zealvim.vim"]
+	path = bundle/zealvim.vim
+	url = https://github.com/KabbAmine/zeavim.vim.git
+    ignore = dirty
