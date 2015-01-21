@@ -1,0 +1,8 @@
+--langdef=objc
+--langmap=objc:.mm.m.h
+--regex-objc=/\@interface[[:space:]]+([[:alpha:]][[:alnum:]_]*)([[:space:]]*\(([^)]*)\))?/\1(\3)/i,class interface/
+--regex-objc=/\@implementation[[:space:]]+([[:alpha:]][[:alnum:]_]*)([[:space:]]*\(([^)]*)\))?/\1(\3)/I,class implementation/
+--regex-objc=/\@property[^;]+[^[:alpha:]_]([[:alpha:]_][[:alnum:]_]*)[[:space:]]*;/\1/p,property/
+--regex-objc=/^[[:space:]]*([-+])[[:space:]]*\([[:alpha:]_][^)]*\)[[:space:]]*([[:alpha:]_][^:;{]+:?)/\1\2/M,method/
+--regex-objc=/^[^[:space:]#@][^=]+[[:space:]]([[:alpha:]_][[:alnum:]_]*)[[:space:]]*=/\1/v,variable/
+--regex-objc=/^[[:space:]]*typedef[[:space:]][^;]+[[:space:]]([[:alpha:]_][[:alnum:]]*)[[:space:]]*;/\1/t,typedef/

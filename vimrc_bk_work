@@ -3,13 +3,11 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "pathgen
 filetype off
-"call pathogen#incubate()
 call pathogen#infect()
 call pathogen#helptags()
 
 filetype plugin indent on
 syntax on
-
 
 "easymotion
 let g:EasyMotion_leader_key = '<Leader>'
@@ -26,7 +24,7 @@ function! MySys()
 		return "mac"
 	endif
 endfunction
-"Set shell to be bash
+"Set shell to be zsh 
 if MySys() == "unix" || MySys() == "mac"
 	set shell=zsh
 else
@@ -36,13 +34,6 @@ endif
 
 "Sets how many lines of history VIM har to remember
 set history=400
-
-"Enable filetype plugin
-"filetype on
-if has("eval") && v:version>=600
-	filetype plugin on
-	filetype indent on
-endif
 
 "Set to auto read when a file is changed from the outside
 if exists("&autoread")
@@ -253,8 +244,6 @@ set expandtab
 set backspace=eol,start,indent
 set smarttab
 set lbr
-"set listchars=precedes:«,extends:»,tab:▸·,trail:∙,eol:¶
-"set tw=500
 
 "Auto indent
 set autoindent
@@ -282,9 +271,6 @@ map <C-F12> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 set tags=+tag
 "use currentdir up dir recuit sub dir tag
 set tags+=./tags,./../tags,./*/tag
-"set tags+=/home/mars/lib_indx/tags/python/tags
-"set tags+=/home/mars/lib_indx/tags/linux_src/tags
-"set tags+=/home/mars/src/qt484/tags
 
 "tagbar setting
 let g:tagbar_ctags_bin='/usr/bin/ctags'
@@ -296,9 +282,6 @@ map <F4> :TagbarToggle<cr>
 if has("autocmd") && v:version>600
 	au BufRead,BufNew *.vim map <buffer> <leader><space> :w!<cr>:source %<cr>
 endif
-
-"Remove the Windows ^M
-"noremap <leader>m :%s//r//g<CR>
 
 "Super paste
 ino <C-v> <esc>:set paste<cr>mui<C-R>+<esc>mv'uV'v=:set nopaste<cr>
@@ -346,26 +329,11 @@ nmap <F6> :cp<cr>
 nmap <F8> :EasyBuffer<cr>
 nmap <s-T> :CommandT<cr>
 
-"nmap <F9> :Pyrun<cr> 
-
 nnoremap <F7> :UndotreeToggle<cr>
-
-"silent! cs add ~/lib_indx/cscope/linux_src/cscope.out
-"add python 3.3
-"silent! cs add ~/lib_indx/cscope/python/3.3/cscope.out
-
-"add qt484
-"silent! cs add /home/mars/src/qt484/cscope.out
-if has("persistent_undo")
-    set undodir='/home/mars/undo_tree/'
-    set undofile
-endif
-
 
 let g:splice_initial_mode = "compare"
 let g:splice_initial_layout_grid = 2
 let g:splice_initial_layout_compare = 1
-
 
 " The switch of the Source Explorer 
 nmap <F10> :SrcExplToggle<CR> 
@@ -421,9 +389,11 @@ nmap <c-s-f> :FufBufferTagAll<CR>
 "nmap <leader>fb :FufBuffer<CR>
 
 "qt help plugin
-let g:qthelp_tags='/usr/local/Trolltech/Qt-4.8.4/doc/tags'
-"let g:qthelp_tags+='/usr/local/qwt-6.1.0-rc3/doc/tags'
-let g:qthelp_browser='/opt/google/chrome/google-chrome'
+if MySys() == "unix"
+    let g:qthelp_tags='/usr/local/Trolltech/Qt-4.8.4/doc/tags'
+    "let g:qthelp_tags+='/usr/local/qwt-6.1.0-rc3/doc/tags'
+    let g:qthelp_browser='/opt/google/chrome/google-chrome'
+endif
 
 "nmap <c-s-g> :QHelpOnThis<CR>
 
@@ -448,31 +418,12 @@ let g:easy_align_delimiters = {
 \   }
 \ }
 
-"""vim easytags
-""let g:easytags_cmd = '/usr/local/bin/ctags'
-""let g:easytags_file = '~/lib_indx/easytags/tags'
-""
-""set tags+=./tags
-"""let g:easytags_dynamic_files = 1
-""let g:easytags_dynamic_files = 2
-""let g:easytags_by_filetype = 1
-""let g:easytags_events = ['BufWritePost']
-""let g:easytags_include_members = 1
-
-
-let g:miniBufExplMapWindowNavVim = 1 
-let g:miniBufExplMapWindowNavArrows = 1 
-let g:miniBufExplMapCTabSwitchBufs = 1 
-let g:miniBufExplModSelTarget = 1 
-
+"shell cmd for generate cscope files
 map <leader>gc :CscopeGen<CR>
 
 "syntastic
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
-"for qt checking source by .clang_complete gen files
-"let g:syntastic_cpp_include_dirs=['/usr/local/Trolltech/Qt-4.8.4/include/', '/usr/share/qt4/mkspecs/linux-g++/', '/usr/include/qt4/QtCore', '/usr/include/qt4/QtGui', '/usr/local/qwt-6.1.0-rc3/include', '/usr/local/Trolltech/Qt-4.8.4/include/QtCore/', '/usr/local/Trolltech/Qt-4.8.4/include/QtGui/'] 
-"
 
 let g:syntastic_cpp_compiler='clang++'
 let g:syntastic_cpp_compiler_options=' -std=c++11 -stdlib=libc++'
@@ -498,6 +449,7 @@ function ToggleQuickfix()
     endif 
     exe winnr "wincmd w" 
 endfunction 
+
 command -nargs=0 -bar FF call ToggleQuickfix() 
 
 function ShowError()
@@ -528,7 +480,6 @@ endfunction
 map <silent> <F11> :call ToggleFullscreen()<CR>
 
 let g:xptemplate_vars="$author=tlhc&$email=marst629@gmail.com"
-
 
 "cscope.vim config for mac
 let g:cscope_cmd = '/usr/bin/cscope'
@@ -561,7 +512,6 @@ nmap <silent> <c-s-K> <Esc>: GetWD<CR>
 vmap <silent> <c-s-K> <Esc>: GetVWD<CR>
 
 "you complete me
-"let g:ycm_global_ycm_extra_conf='~/.vim/dot_ycm_extra_conf.py'
 let g:ycm_global_ycm_extra_conf='./.ycm_extra_conf.py'
 let g:ycm_extra_conf_globlist = ['./.ycm_extra_conf.py']
 let g:ycm_confirm_extra_conf = 1
@@ -589,8 +539,7 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
-silent! cs add /usr/include/eXosip2/cscope.out
-"colorscheme autumnleaf
+"silent! cs add /usr/include/eXosip2/cscope.out
 "Gist vim
 let g:gist_show_privates = 1
 command B !make
@@ -602,15 +551,8 @@ nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
 
 let g:C_CFlags = '-Wall -std=c99 -g -O0 -c'
 
-let g:pymode_rope_completion = 0
-"let g:pymode_rope_complete_on_dot = 1
-"let g:pymode_rope_completion_bind = '<C-j>'
-
 nmap <leader>mm :%s/\r//g<CR>
 
-"let g:gist_use_password_in_gitconfig = 1
-"
-"
 "for ObjectiveC
 "https://github.com/majutsushi/tagbar/wiki
 let g:tagbar_type_objc = {
@@ -648,3 +590,7 @@ let g:tagbar_type_objc = {
 \ }
 
 
+"for ObjectiveC fuzzfinder ctags
+"https://gist.github.com/yamaya/11165621"
+let g:fuf_buffertag_ctagsPath = '/usr/bin/ctags'
+let g:fuf_buffertag__objc = '--options='.expand('~/.vim/bundle/fuf-settings/ctags-options-fuzzyfinder')
