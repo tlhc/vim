@@ -5,8 +5,6 @@ python << EOF
 # coding=utf-8
 
 import vim, urllib2, sys
-
-
 def tras(word):
 
     s = "trans-container"
@@ -18,7 +16,6 @@ def tras(word):
     try:
         url = urllib2.urlopen(request, None, 2)
         d = url.read()
-
         epos = d.find(err.decode("utf-8").encode("utf-8"))
 
         if epos != -1:
@@ -28,11 +25,13 @@ def tras(word):
             print word + ":"
 
         pos = d.find(s.decode("utf-8").encode("utf-8"))
-        ret = d[pos : pos + 5000]
+        ret = d[pos : pos + 1000]
 
         pos = ret.find("<ul>")
-        pos1 = ret.find("</ul>")
-
+        pos1 = ret.find("</ul>", pos)
+        if pos1 < pos:
+            print 'not find.'
+            return
         ret = ret[pos + 4 : pos1]
         if "<span" in ret:
             idn = "class=\"pos\">"
@@ -52,7 +51,8 @@ def tras(word):
 
     except URLError as e:
         print e.reason
-        return
+
+    return
 
 
 word=vim.eval("a:word")
