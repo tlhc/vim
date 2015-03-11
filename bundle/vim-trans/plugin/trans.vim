@@ -50,7 +50,7 @@ def tras(word):
             ret = ret.replace('</li>', '')
             print ret
 
-    except URLError as e:
+    except urllib2.URLError as e:
         print e.reason
         return
 
