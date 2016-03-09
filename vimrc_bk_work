@@ -324,8 +324,8 @@ let g:Powerline_cache_enabled = 1
 "
 
 nmap <F3> :NERDTreeToggle<cr>
-nmap <F5> :cn<cr>
-nmap <F6> :cp<cr>
+nmap <M-n> :silent cn<cr>
+nmap <S-M-n> :silent cp<cr>
 nmap <F8> :EasyBuffer<cr>
 nmap <s-T> :CommandT<cr>
 
@@ -418,8 +418,15 @@ let g:easy_align_delimiters = {
 \   }
 \ }
 
+
+
+
 "shell cmd for generate cscope files
-map <leader>gc :CscopeGen<CR>
+"
+
+map <leader>gc :execute '!cscGen' <cr> 
+            \:cs add ./cscope.out <cr> 
+            \:ycmadd.py <cr> 
 
 "syntastic
 let g:syntastic_error_symbol='✗'
