@@ -70,6 +70,8 @@ flags = [
 '-isystem',
 '/usr/include/i386-linux-gnu/c++/4.8',
 '-isystem',
+'/usr/include/x86_64-linux-gnu/c++/4.8',
+'-isystem',
 '/usr/include/clang/3.4/include/',
 '-isystem',
 '/usr/include/i386-linux-gnu',
@@ -77,6 +79,12 @@ flags = [
 '/usr/include/linux',
 '-isystem',
 '/usr/include/c++/4.8/tr1',
+'-isystem',
+'/usr/include/c++/4.8/tr2',
+'-isystem',
+'/usr/include/clang/3.6/include',
+'isystem',
+'/usr/include/x86_64-linux-gnu',
 
 #for QT
 #'-DQT_CORE_LIB',
