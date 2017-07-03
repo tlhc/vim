@@ -125,8 +125,8 @@ if has("gui_running")
         "colorscheme desertEx
 		"colorscheme molokai
 		"set guifont=Monaco:h14
-		set guifont=DejaVuSansMono\ 12
-
+		"set guifont=DejaVuSansMono\ 12
+        set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12
 	endif
 else
 	if v:version > 601
@@ -138,7 +138,9 @@ else
 		"colorscheme seoul256-light
 		"colorscheme desert
 		"set guifont=DejaVuSansMono\ 13
-		set guifont=Monaco:h14
+		"set guifont=Monaco:h14
+        "set guifont=DejaVuSansMono-Powerline\ 12
+        set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12
 	endif
 endif
 
@@ -313,7 +315,7 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 "pwerline
 "let g:Powerline_symbols='fancy'
 "let g:Powerline_symbols='normal'
-let g:Powerline_cache_enabled = 1
+"let g:Powerline_cache_enabled = 1
 "let g:Powerline_dividers_override = ['>>', '>', '<<', '<']
 "let g:Powerline_symbols_override = {
 "    \   'BRANCH': [0x2b60]
@@ -323,9 +325,13 @@ let g:Powerline_cache_enabled = 1
 "\}
 "
 
+let g:airline_theme="Powerlineish"
+let g:airline_powerline_fonts = 1
+
+
 nmap <F3> :NERDTreeToggle<cr>
-nmap <M-n> :silent cn<cr>
-nmap <S-M-n> :silent cp<cr>
+nmap <M-n> :silent cn <cr>
+nmap <M-S-n> :silent cp <cr>
 nmap <F8> :EasyBuffer<cr>
 nmap <s-T> :CommandT<cr>
 
@@ -418,15 +424,8 @@ let g:easy_align_delimiters = {
 \   }
 \ }
 
-
-
-
 "shell cmd for generate cscope files
-"
-
-map <leader>gc :execute '!cscGen' <cr> 
-            \:cs add ./cscope.out <cr> 
-            \:ycmadd.py <cr> 
+map <leader>gc :CscopeGen<CR>
 
 "syntastic
 let g:syntastic_error_symbol='✗'
