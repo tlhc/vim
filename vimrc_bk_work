@@ -325,7 +325,7 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 "\}
 "
 
-let g:airline_theme="Powerlineish"
+let g:airline_theme="hybridline"
 let g:airline_powerline_fonts = 1
 
 
