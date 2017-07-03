@@ -79,9 +79,6 @@
 	path = bundle/vim-plugin-viewdoc
 	url = https://github.com/powerman/vim-plugin-viewdoc.git
     ignore = dirty
-[submodule "bundle/vim-powerline"]
-	path = bundle/vim-powerline
-	url = https://github.com/Lokaltog/vim-powerline.git
 [submodule "bundle/vim-qthelp"]
 	path = bundle/vim-qthelp
 	url = https://github.com/xaizek/vim-qthelp.git
@@ -119,3 +116,6 @@
 	path = bundle/investigate.vim
 	url = https://github.com/Keithbsmiley/investigate.vim.git
     ignore = dirty
+[submodule "bundle/vim-airline"]
+	path = bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
