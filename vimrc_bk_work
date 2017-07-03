@@ -16,20 +16,20 @@ let g:EasyMotion_do_shade = 1
 set nocompatible
 
 function! MySys()
-	if has("win32")
-		return "win32"
-	elseif has("unix")
-		return "unix"
-	else
-		return "mac"
-	endif
+    if has("win32")
+        return "win32"
+    elseif has("unix")
+        return "unix"
+    else
+        return "mac"
+    endif
 endfunction
 "Set shell to be zsh 
 if MySys() == "unix" || MySys() == "mac"
-	set shell=zsh
+    set shell=zsh
 else
-	"I have to run win32 python without cygwin
-	"set shell=E:cygwininsh
+    "I have to run win32 python without cygwin
+    "set shell=E:cygwininsh
 endif
 
 "Sets how many lines of history VIM har to remember
@@ -37,12 +37,12 @@ set history=400
 
 "Set to auto read when a file is changed from the outside
 if exists("&autoread")
-	set autoread
+    set autoread
 endif
 
 "Have the mouse enabled all the time:
 if exists("&mouse")
-	set mouse=a
+    set mouse=a
 endif
 
 "Set mapleader
@@ -57,91 +57,91 @@ syntax on
 "internationalization
 "I only work in Win2k Chinese version
 if has("multi_byte")
-	"set bomb
-	set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,latin1,gb18030
-	" CJK environment detection and corresponding setting
-	if v:lang =~ "^zh_CN"
-		" Use cp936 to support GBK, euc-cn == gb2312
-		set encoding=utf-8
-		set termencoding=utf-8
-		set fileencoding=utf-8
-	elseif v:lang =~ "^zh_TW"
-		" cp950, big5 or euc-tw
-		" Are they equal to each other?
-		set encoding=big5
-		set termencoding=big5
-		set fileencoding=big5
-	elseif v:lang =~ "^ko"
-		" Copied from someone's dotfile, untested
-		set encoding=euc-kr
-		set termencoding=euc-kr
-		set fileencoding=euc-kr
-	elseif v:lang =~ "^ja_JP"
-		" Copied from someone's dotfile, untested
-		set encoding=euc-jp
-		set termencoding=euc-jp
-		set fileencoding=euc-jp
-	endif
-	" Detect UTF-8 locale, and replace CJK setting if needed
-	if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
-		set encoding=utf-8
-		set termencoding=utf-8
-		set fileencoding=utf-8
-	endif
+    "set bomb
+    set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,latin1,gb18030
+    " CJK environment detection and corresponding setting
+    if v:lang =~ "^zh_CN"
+        " Use cp936 to support GBK, euc-cn == gb2312
+        set encoding=utf-8
+        set termencoding=utf-8
+        set fileencoding=utf-8
+    elseif v:lang =~ "^zh_TW"
+        " cp950, big5 or euc-tw
+        " Are they equal to each other?
+        set encoding=big5
+        set termencoding=big5
+        set fileencoding=big5
+    elseif v:lang =~ "^ko"
+        " Copied from someone's dotfile, untested
+        set encoding=euc-kr
+        set termencoding=euc-kr
+        set fileencoding=euc-kr
+    elseif v:lang =~ "^ja_JP"
+        " Copied from someone's dotfile, untested
+        set encoding=euc-jp
+        set termencoding=euc-jp
+        set fileencoding=euc-jp
+    endif
+    " Detect UTF-8 locale, and replace CJK setting if needed
+    if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
+        set encoding=utf-8
+        set termencoding=utf-8
+        set fileencoding=utf-8
+    endif
 endif
 
 "if you use vim in tty,
 "'uxterm -cjk' or putty with option 'Treat CJK ambiguous characters as wide' on
 if exists("&ambiwidth")
-	set ambiwidth=double
+    set ambiwidth=double
 endif
 
 if has("gui_running")
-	set guioptions-=m
-	set guioptions-=T
-	set guioptions-=l
-	set guioptions-=L
-	set guioptions-=r
-	set guioptions-=R
+    set guioptions-=m
+    set guioptions-=T
+    set guioptions-=l
+    set guioptions-=L
+    set guioptions-=r
+    set guioptions-=R
     set guioptions-=e
     set guioptions-=b
 
     "set maximized
     "set lines=999 columns=999
-	if MySys()=="win32"
-		"start gvim maximized
-		if has("autocmd")
-			au GUIEnter * simalt ~x
-		endif
-	endif
-	"let psc_style='cool'
-	if v:version > 601
-		"colorscheme ps_color
-		"colorscheme default
-		"colorscheme elflord
-		colorscheme seoul256-light
+    if MySys()=="win32"
+        "start gvim maximized
+        if has("autocmd")
+            au GUIEnter * simalt ~x
+        endif
+    endif
+    "let psc_style='cool'
+    if v:version > 601
+        "colorscheme ps_color
         "colorscheme default
-		"colorscheme autumnleaf
+        "colorscheme elflord
+        colorscheme seoul256-light
+        "colorscheme default
+        "colorscheme autumnleaf
         "colorscheme desertEx
-		"colorscheme molokai
-		"set guifont=Monaco:h14
-		"set guifont=DejaVuSansMono\ 12
+        "colorscheme molokai
+        "set guifont=Monaco:h14
+        "set guifont=DejaVuSansMono\ 12
         set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12
-	endif
+    endif
 else
-	if v:version > 601
-		"set background=dark
-		"colorscheme default
-		"colorscheme molokai
-		"colorscheme autumnleaf
-		colorscheme seoul256-light
-		"colorscheme seoul256-light
-		"colorscheme desert
-		"set guifont=DejaVuSansMono\ 13
-		"set guifont=Monaco:h14
+    if v:version > 601
+        "set background=dark
+        "colorscheme default
+        "colorscheme molokai
+        "colorscheme autumnleaf
+        colorscheme seoul256-light
+        "colorscheme seoul256-light
+        "colorscheme desert
+        "set guifont=DejaVuSansMono\ 13
+        "set guifont=Monaco:h14
         "set guifont=DejaVuSansMono-Powerline\ 12
         set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12
-	endif
+    endif
 endif
 
 
@@ -210,12 +210,12 @@ map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 
 if v:version>=700
-	set switchbuf=usetab
+    set switchbuf=usetab
 endif
 
 "always display the tab line
 if exists("&showtabline")
-	set stal=2
+    set stal=2
 endif
 
 "General Autocommand
@@ -231,11 +231,11 @@ set noswapfile
 
 "Folding
 if exists("&foldenable")
-	set fen
+    set fen
 endif
 
 if exists("&foldlevel")
-	set fdl=0
+    set fdl=0
 endif
 
 "Text option
@@ -255,7 +255,7 @@ set smartindent
 
 "C-style indenting
 if has("cindent")
-	set cindent
+    set cindent
 endif
 
 "Wrap line
@@ -282,7 +282,7 @@ map <F4> :TagbarToggle<cr>
 
 "Buf new
 if has("autocmd") && v:version>600
-	au BufRead,BufNew *.vim map <buffer> <leader><space> :w!<cr>:source %<cr>
+    au BufRead,BufNew *.vim map <buffer> <leader><space> :w!<cr>:source %<cr>
 endif
 
 "Super paste
@@ -290,10 +290,10 @@ ino <C-v> <esc>:set paste<cr>mui<C-R>+<esc>mv'uV'v=:set nopaste<cr>
 
 "cscope 
 if has("cscope")
-	set cscopequickfix=s-,c-,d-,i-,t-,e-
-	set csto=0
-	set cst
-	set csverb
+    set cscopequickfix=s-,c-,d-,i-,t-,e-
+    set csto=0
+    set cst
+    set csverb
 endif
 
 "selction
@@ -327,6 +327,7 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 let g:airline_theme="hybridline"
 let g:airline_powerline_fonts = 1
+"let g:airline#extensions#ale#enabled = 1
 
 
 nmap <F3> :NERDTreeToggle<cr>
@@ -441,7 +442,7 @@ function ToggleQuickfix()
     " find qf window, if any 
     let qfw = 0 
     windo if &l:buftype == "quickfix" | 
-                \	let qfw = winnr() | endif 
+                \    let qfw = winnr() | endif 
     if qfw 
         " close qf window 
         cclose 
@@ -501,14 +502,14 @@ let g:dash_map = {
 "let g:C_CplusCFlags = '-Wall -g -std=c++11 -O0 -c '      " C++ compiler flags: compile, don't optimize
 "let g:C_CplusLFlags = '-Wall -g -std=c++11 -O0'         " C++ compiler flags: link   , don't optimize
 
-nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR> 
-nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>  
-nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>  
-nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>  
-nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>  
-nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>  
+nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>  
+nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 "let g:CommandTMaxFiles=20000
 silent! cs add ./cscope.out
